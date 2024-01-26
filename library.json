@@ -1,0 +1,26 @@
+{
+    "name": "stus-rf24-commons",
+    "version": "1.0.0",
+    "description": "Common library for radio RF24 models, messages and more",
+    "keywords": "stus, victron, ve.direct, samd21, esp, solar",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/jaisor/stus-rf24-commons"
+    },
+    "authors":
+    [
+      {
+        "name": "Jordan Marinov",
+        "email": "jaisir@gmail.com",
+        "url": "https://jaisor.net"
+      }
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/jaisor/stus-rf24-commons",
+    "dependencies": {
+      "thijse/ArduinoLog": "^1.1.1"
+    },
+    "frameworks": "*",
+    "platforms": "*"
+  }
