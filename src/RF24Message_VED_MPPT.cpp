@@ -32,3 +32,20 @@ const String CRF24Message_VED_MPPT::getString() {
   Log.verboseln(F("CRF24Message_VED_MPPT::getString() : %s"), c);
   return String(c);
 }
+
+void CRF24Message_VED_MPPT::populateJson(JsonDocument &json) {
+  CBaseMessage::populateJson(json);
+  json["message_id"] = MSG_VED_MPPT_ID;
+  json["battery_voltage"] = msg.b_voltage;
+  json["battery_current"] = msg.b_current;
+  json["panel_voltage"] = msg.p_voltage;
+  json["panel_power"] = msg.p_power;
+  json["current_state"] = msg.current_state;
+  json["mppt"] = msg.mppt;
+  json["off_reason"] = msg.off_reason;
+  json["error"] = msg.error;
+  json["today_yield"] = msg.today_yield;
+  json["today_max_power"] = msg.today_max_power;
+  json["temperature"] = msg.temperature*9.0/5.0 + 32.0;
+  json["temperature_unit"] = F("Fahrenheit"); // TODO: make configurable
+}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
+#include <ArduinoJson.h>
 
 // Message Uptime-Voltage-Temperature-Humidity-BarometricPressure
 #define MSG_UVTHP_ID 1
@@ -64,6 +65,7 @@ public:
   virtual const String getString() { return String(""); }
   virtual const uint8_t getId() = 0;
   virtual const bool isError() { return false; }
-  virtual const void* getMessageBuffer() = 0; 
-  virtual const uint8_t getMessageLength() = 0; 
+  virtual const void* getMessageBuffer() = 0;
+  virtual const uint8_t getMessageLength() = 0;
+  virtual void populateJson(JsonDocument &json);
 };

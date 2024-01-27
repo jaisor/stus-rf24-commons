@@ -16,4 +16,5 @@ public:
   virtual const bool isError() { return error; }
   virtual const String getString();
   virtual const uint8_t getId() { return msg.id; }
+  virtual void populateJson(JsonDocument &json);
 };

@@ -32,3 +32,19 @@ const String CRF24Message_VED_INV::getString() {
   Log.verboseln(F("CRF24Message_VED_INV::getString() : %s"), c);
   return String(c);
 }
+
+void CRF24Message_VED_INV::populateJson(JsonDocument &json) {
+  CBaseMessage::populateJson(json);
+  json["message_id"] = MSG_VED_INV_ID;
+  json["battery_voltage"] = msg.b_voltage;
+  json["ac_current"] = msg.ac_current;
+  json["ac_voltage"] = msg.ac_voltage;
+  json["ac_va_power"] = msg.ac_va_power;
+  json["current_state"] = msg.current_state;
+  json["mode"] = msg.mode;
+  json["off_reason"] = msg.off_reason;
+  json["alarm"] = msg.alarm;
+  json["warning"] = msg.warning;
+  json["temperature"] = msg.temperature*9.0/5.0 + 32.0;
+  json["temperature_unit"] = F("Fahrenheit"); // TODO: make configurable
+}

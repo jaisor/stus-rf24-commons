@@ -33,3 +33,16 @@ const String CRF24Message::getString() {
   Log.verboseln(F("CRF24Message::getString() : %s"), c);
   return String(c);
 }
+
+void CRF24Message::populateJson(JsonDocument &json) {
+  CBaseMessage::populateJson(json);
+  json["message_id"] = MSG_UVTHP_ID;
+  json["uptime_millis"] = msg.uptime;
+  json["voltage"] = msg.voltage;
+  json["temperature"] = msg.temperature*9.0/5.0 + 32.0;
+  json["temperature_unit"] = F("Fahrenheit"); // TODO: make configurable
+  json["humidity"] = msg.humidity;
+  json["humidity_unit"] = "percent";
+  json["barometric_pressure"] = msg.baro_pressure;
+  json["barometric_pressure_unit"] = "Pascal";
+}
