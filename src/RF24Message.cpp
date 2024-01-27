@@ -1,6 +1,5 @@
 #include <ArduinoLog.h>
 #include <Arduino.h>
-#include <stdexcept>
 
 #include "RF24Message.h"
 
