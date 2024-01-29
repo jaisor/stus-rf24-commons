@@ -45,8 +45,8 @@ typedef struct r24_message_ved_mppt_t {
   u_int8_t off_reason;
   u_int8_t error;
   //
-  u_int16_t today_yield;      // 0.01*Wh
-  u_int16_t today_max_power;  // 0.01*Wh
+  u_int16_t today_yield;      // 10*Wh
+  u_int16_t today_max_power;  // W
   //
   float temperature;      // C
 } _r24_message_ved_mppt1_t;
