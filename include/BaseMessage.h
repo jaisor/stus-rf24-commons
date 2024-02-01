@@ -53,7 +53,7 @@ typedef struct r24_message_ved_mppt_t {
 } _r24_message_ved_mppt1_t;
 
 typedef enum stus_error_codes {
-  NO_ERROR = 0,
+  NoError = 0,
   VEDirectCommFail = 1,
   TempSensorFail = 2,
   BattSensorFail = 3
