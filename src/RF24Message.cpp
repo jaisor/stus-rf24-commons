@@ -45,4 +45,5 @@ void CRF24Message::populateJson(JsonDocument &json) {
   json["humidity_unit"] = "percent";
   json["barometric_pressure"] = msg.baro_pressure;
   json["barometric_pressure_unit"] = "Pascal";
+  json["error"] = msg.error;
 }
