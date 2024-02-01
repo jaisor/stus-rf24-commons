@@ -12,7 +12,8 @@ typedef struct r24_message_uvthp_t {
   float temperature;
   float humidity;
   float baro_pressure;
-  uint8_t pad[8];
+  uint8_t error;
+  uint8_t pad[7];
 } _r24_message_uvtha_t;
 
 #define MSG_VED_INV_ID 2
@@ -50,6 +51,13 @@ typedef struct r24_message_ved_mppt_t {
   //
   float temperature;      // C
 } _r24_message_ved_mppt1_t;
+
+typedef enum stus_error_codes {
+  NO_ERROR = 0,
+  VEDirectCommFail = 1,
+  TempSensorFail = 2,
+  BattSensorFail = 3
+} _stus_error_codes;
 
 class CBaseMessage {
 
