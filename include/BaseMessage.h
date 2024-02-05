@@ -51,6 +51,21 @@ typedef struct r24_message_ved_mppt_t {
   float temperature;      // C
 } _r24_message_ved_mppt_t;
 
+#define MSG_VED_BATT_ID 4
+typedef struct r24_message_ved_batt_t {
+  uint8_t id;             // message id
+  //
+  float b_voltage;          // V
+  float b_current;          // A - when > 0, the battery is being charged, < 0 the battery is being
+  float b_power;            // W
+  uint8_t current_state;
+  uint8_t state_of_charge;  // *0.1 % 0 - 100
+  uint16_t minutes_to_go;
+  uint8_t alarm;
+  //
+  float temperature;      // C
+} _r24_message_ved_batt_t;
+
 class CBaseMessage {
 
 protected:
