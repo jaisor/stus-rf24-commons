@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ArduinoJson.h>
 #include <Arduino.h>
 
 // Message Uptime-Voltage-Temperature-Humidity-BarometricPressure
@@ -66,6 +67,13 @@ typedef struct r24_message_ved_batt_t {
   float temperature;      // C
 } _r24_message_ved_batt_t;
 
+typedef enum stus_error_codes {
+  NoError = 0,
+  VEDirectCommFail = 1,
+  TempSensorFail = 2,
+  BattSensorFail = 3
+} _stus_error_codes;
+
 class CBaseMessage {
 
 protected:
@@ -82,4 +90,5 @@ public:
   virtual const bool isError() { return false; }
   virtual const void* getMessageBuffer() = 0; 
   virtual const uint8_t getMessageLength() = 0; 
+  virtual void populateJson(JsonDocument &json);
 };
