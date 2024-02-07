@@ -2,7 +2,7 @@
 
 #include "RF24Message_VED_BATT_SUP.h"
 
-CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const r24_message_ved_batt_t msg)
+CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const r24_message_ved_batt_sup_t msg)
 : CBaseMessage(pipe), msg(msg) {  
   
   error = false;
