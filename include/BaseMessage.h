@@ -59,17 +59,35 @@ typedef struct r24_message_ved_batt_t {
   float b_voltage;            // V
   float b_aux_voltage;        // V
   float b_current;            // A - when > 0, the battery is being charged, < 0 the battery is being
-  uint16_t b_power;           // W
+  int16_t b_power;            // W
   float consumed_energy;      // Ah
-  uint16_t state_of_charge;   // *0.1 % 0 - 100
-  uint16_t minutes_to_go;
+  uint16_t percent_charged;   // *0.1 % 0 - 100
+  uint32_t minutes_to_empty;
   uint8_t alarm;
-  // 24
-  uint16_t charge_cycles;
-  uint16_t b_voltage_min;        // V
   //
-  float temperature;      // C
+  float temperature;          // C
+  //
+  uint8_t pad[2];
 } _r24_message_ved_batt_t;
+
+#define MSG_VED_BATT_SUP_ID 5 // Supplemental
+typedef struct r24_message_ved_batt_sup_t {
+  uint8_t id;             // message id
+  //
+  float discharge_last;         // Ah
+  uint16_t charge_cycles;
+  //
+  float b_voltage_min;        // V
+  float b_voltage_max;        // V
+  //
+  float b_aux_voltage_min;        // V
+  float b_aux_voltage_max;        // V
+  //
+  float energy_charged;       // Wh
+  float energy_discharged;    // Wh
+  //
+  uint8_t pad[1];
+} _r24_message_ved_batt_sup_t;
 
 typedef enum stus_error_codes {
   NoError = 0,

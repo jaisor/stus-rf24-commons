@@ -28,7 +28,22 @@ CRF24Message_VED_BATT::CRF24Message_VED_BATT(const u_int8_t pipe, const void* bu
 const String CRF24Message_VED_BATT::getString() {
   char c[255];
   snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, I=%0.2fA, P=%0.2fV, SOC=%0.2f%% T=%0.2fC)"), pipe, 
-        msg.b_voltage, msg.b_current, msg.b_power, msg.state_of_charge/10.0, msg.temperature);
+        msg.b_voltage, msg.b_current, msg.b_power, msg.percent_charged/10.0, msg.temperature);
   Log.verboseln(F("CRF24Message_VED_BATT::getString() : %s"), c);
   return String(c);
+}
+
+void CRF24Message_VED_BATT::populateJson(JsonDocument &json) {
+  CBaseMessage::populateJson(json);
+  json["message_id"] = MSG_VED_INV_ID;
+  json["battery_voltage"] = msg.b_voltage;
+  json["battery_aux_voltage"] = msg.b_aux_voltage;
+  json["battery_current"] = msg.b_current;
+  json["battery_power"] = msg.b_power;
+  json["consumed_energy"] = msg.consumed_energy;
+  json["percent_charged"] = msg.percent_charged;
+  json["minutes_to_empty"] = msg.minutes_to_empty;
+  json["alarm"] = msg.alarm;
+  json["temperature"] = msg.temperature*9.0/5.0 + 32.0;
+  json["temperature_unit"] = F("Fahrenheit"); // TODO: make configurable
 }
