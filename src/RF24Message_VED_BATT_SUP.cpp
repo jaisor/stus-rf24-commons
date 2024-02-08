@@ -16,8 +16,8 @@ CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const 
     return;
   }
   memcpy(&msg, buf, length <= getMessageLength() ? length : getMessageLength());
-  if (msg.id != MSG_VED_MPPT_ID) {
-    //Log.errorln(F("Message ID %i doesn't match MSG_VED_MPPT_ID(%i)"), msg.id, MSG_VED_MPPT_ID);
+  if (msg.id != MSG_VED_BATT_SUP_ID) {
+    //Log.errorln(F("Message ID %i doesn't match MSG_VED_BATT_SUP_ID(%i)"), msg.id, MSG_VED_BATT_SUP_ID);
     memset(&msg, 0, getMessageLength());
     error = true;
   } else {
