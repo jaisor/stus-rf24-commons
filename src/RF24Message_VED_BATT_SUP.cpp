@@ -27,8 +27,8 @@ CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const 
 
 const String CRF24Message_VED_BATT_SUP::getString() {
   char c[255];
-  snprintf_P(c, 255, PSTR("[%u] (VMin=%0.2fV, VMax=%0.2fV, EC=%0.2fAh, EDC=%0.2f%Ah)"), pipe, 
-        msg.b_voltage_min, msg.b_voltage_max, msg.energy_charged, msg.energy_discharged);
+  snprintf_P(c, 255, PSTR("[%u] (VMin=%0.2fV, EC=%0.2fAh, EDC=%0.2f%Ah, T=%0.2fC)"), pipe, 
+        msg.b_voltage_min, msg.energy_charged, msg.energy_discharged, msg.temperature);
   Log.verboseln(F("CRF24Message_VED_BATT_SUP::getString() : %s"), c);
   return String(c);
 }
@@ -39,9 +39,9 @@ void CRF24Message_VED_BATT_SUP::populateJson(JsonDocument &json) {
   json["discharge_last"] = msg.discharge_last;
   json["charge_cycles"] = msg.charge_cycles;
   json["battery_voltage_min"] = msg.b_voltage_min;
-  json["battery_voltage_min"] = msg.b_voltage_max;
   json["battery_aux_voltage_min"] = msg.b_aux_voltage_min;
-  json["battery_aux_voltage_min"] = msg.b_aux_voltage_max;
   json["energy_charged"] = msg.energy_charged;
   json["energy_discharged"] = msg.energy_discharged;
+  json["temperature"] = msg.temperature*9.0/5.0 + 32.0;
+  json["temperature_unit"] = F("Fahrenheit"); // TODO: make configurable
 }
