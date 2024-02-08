@@ -35,7 +35,7 @@ const String CRF24Message_VED_BATT::getString() {
 
 void CRF24Message_VED_BATT::populateJson(JsonDocument &json) {
   CBaseMessage::populateJson(json);
-  json["message_id"] = MSG_VED_INV_ID;
+  json["message_id"] = msg.id;
   json["battery_voltage"] = msg.b_voltage;
   json["battery_aux_voltage"] = msg.b_aux_voltage;
   json["battery_current"] = msg.b_current;

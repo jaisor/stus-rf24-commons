@@ -36,7 +36,7 @@ const String CRF24Message::getString() {
 
 void CRF24Message::populateJson(JsonDocument &json) {
   CBaseMessage::populateJson(json);
-  json["message_id"] = MSG_UVTHP_ID;
+  json["message_id"] = msg.id;
   json["uptime_millis"] = msg.uptime;
   json["voltage"] = msg.voltage;
   json["temperature"] = msg.temperature*9.0/5.0 + 32.0;

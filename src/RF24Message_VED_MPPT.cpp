@@ -35,7 +35,7 @@ const String CRF24Message_VED_MPPT::getString() {
 
 void CRF24Message_VED_MPPT::populateJson(JsonDocument &json) {
   CBaseMessage::populateJson(json);
-  json["message_id"] = MSG_VED_MPPT_ID;
+  json["message_id"] = msg.id;
   json["battery_voltage"] = msg.b_voltage;
   json["battery_current"] = msg.b_current;
   json["panel_voltage"] = msg.p_voltage;

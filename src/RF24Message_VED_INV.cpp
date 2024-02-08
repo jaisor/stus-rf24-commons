@@ -6,7 +6,7 @@ CRF24Message_VED_INV::CRF24Message_VED_INV(const u_int8_t pipe, const r24_messag
 : CBaseMessage(pipe), msg(msg) {  
   
   error = false;
-  this->msg.id = MSG_VED_MPPT_ID;
+  this->msg.id = MSG_VED_INV_ID;
 }
 
 CRF24Message_VED_INV::CRF24Message_VED_INV(const u_int8_t pipe, const void* buf, const uint8_t length)
@@ -35,7 +35,7 @@ const String CRF24Message_VED_INV::getString() {
 
 void CRF24Message_VED_INV::populateJson(JsonDocument &json) {
   CBaseMessage::populateJson(json);
-  json["message_id"] = MSG_VED_INV_ID;
+  json["message_id"] = msg.id;
   json["battery_voltage"] = msg.b_voltage;
   json["ac_current"] = msg.ac_current;
   json["ac_voltage"] = msg.ac_voltage;

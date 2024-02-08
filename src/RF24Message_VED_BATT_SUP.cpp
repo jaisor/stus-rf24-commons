@@ -6,7 +6,7 @@ CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const 
 : CBaseMessage(pipe), msg(msg) {  
   
   error = false;
-  this->msg.id = MSG_VED_BATT_ID;
+  this->msg.id = MSG_VED_BATT_SUP_ID;
 }
 
 CRF24Message_VED_BATT_SUP::CRF24Message_VED_BATT_SUP(const u_int8_t pipe, const void* buf, const uint8_t length)
@@ -35,7 +35,7 @@ const String CRF24Message_VED_BATT_SUP::getString() {
 
 void CRF24Message_VED_BATT_SUP::populateJson(JsonDocument &json) {
   CBaseMessage::populateJson(json);
-  json["message_id"] = MSG_VED_INV_ID;
+  json["message_id"] = msg.id;
   json["discharge_last"] = msg.discharge_last;
   json["charge_cycles"] = msg.charge_cycles;
   json["battery_voltage_min"] = msg.b_voltage_min;
