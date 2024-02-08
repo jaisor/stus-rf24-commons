@@ -28,8 +28,8 @@ CRF24Message::CRF24Message(const u_int8_t pipe, const void* buf, const uint8_t l
 
 const String CRF24Message::getString() {
   char c[255];
-  snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, T=%0.2fC, H=%0.2f%%, BP=%0.2fKPa U=%0.2fsec) ERR=%i"), pipe, 
-        msg.voltage, msg.temperature, msg.humidity, msg.baro_pressure/1000.0, (float)(msg.uptime)/1000.0, msg.error);
+  snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, T=%0.2fC, H=%0.2f%%, BP=%0.2fKPa, U=%0.2fsec, ERR=%i)"), pipe, 
+    msg.voltage, msg.temperature, msg.humidity, msg.baro_pressure/1000.0, (float)(msg.uptime)/1000.0, msg.error);
   Log.verboseln(F("CRF24Message::getString() : %s"), c);
   return String(c);
 }
@@ -45,5 +45,5 @@ void CRF24Message::populateJson(JsonDocument &json) {
   json["humidity_unit"] = "percent";
   json["barometric_pressure"] = msg.baro_pressure;
   json["barometric_pressure_unit"] = "Pascal";
-  json["stus_error"] = msg.error;
+  json["error"] = msg.error;
 }
