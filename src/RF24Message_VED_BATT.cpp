@@ -41,7 +41,7 @@ void CRF24Message_VED_BATT::populateJson(JsonDocument &json) {
   json["battery_current"] = msg.b_current;
   json["battery_power"] = msg.b_power;
   json["consumed_energy"] = msg.consumed_energy;
-  json["percent_charged"] = msg.percent_charged;
+  json["percent_charged"] = msg.percent_charged / 10.0;
   json["minutes_to_empty"] = msg.minutes_to_empty;
   json["alarm"] = msg.alarm;
 }
