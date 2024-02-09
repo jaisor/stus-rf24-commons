@@ -27,9 +27,9 @@ CRF24Message_VED_MPPT::CRF24Message_VED_MPPT(const u_int8_t pipe, const void* bu
 
 const String CRF24Message_VED_MPPT::getString() {
   char c[255];
-  snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, I=%0.2fA, VPV=%0.2fV, PPV=%0.2fW T=%0.2fC)"), pipe, 
-        msg.b_voltage, msg.b_current, msg.p_voltage, msg.p_power, msg.temperature);
-  Log.verboseln(F("CRF24Message_VED_MPPT::getString() : %s"), c);
+  snprintf_P(c, 255, PSTR("CRF24Message_VED_MPPT[%u] (ID=%i, V=%0.2fV, I=%0.2fA, VPV=%0.2fV, PPV=%0.2fW T=%0.2fC)"), pipe, 
+        msg.id, msg.b_voltage, msg.b_current, msg.p_voltage, msg.p_power, msg.temperature);
+  //Log.verboseln(F("CRF24Message_VED_MPPT::getString() : %s"), c);
   return String(c);
 }
 

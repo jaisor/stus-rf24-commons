@@ -27,9 +27,9 @@ CRF24Message_VED_INV::CRF24Message_VED_INV(const u_int8_t pipe, const void* buf,
 
 const String CRF24Message_VED_INV::getString() {
   char c[255];
-  snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, ACI=%0.2fA, ACV=%0.2fV, ACVA=%0.2fW T=%0.2fC)"), pipe, 
-        msg.b_voltage, msg.ac_current, msg.ac_voltage, msg.ac_va_power, msg.temperature);
-  Log.verboseln(F("CRF24Message_VED_INV::getString() : %s"), c);
+  snprintf_P(c, 255, PSTR("CRF24Message_VED_INV[%u] (ID=%i, V=%0.2fV, ACI=%0.2fA, ACV=%0.2fV, ACVA=%0.2fW T=%0.2fC)"), pipe, 
+        msg.id, msg.b_voltage, msg.ac_current, msg.ac_voltage, msg.ac_va_power, msg.temperature);
+  //Log.verboseln(F("CRF24Message_VED_INV::getString() : %s"), c);
   return String(c);
 }
 

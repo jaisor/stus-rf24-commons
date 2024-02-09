@@ -27,9 +27,9 @@ CRF24Message_VED_BATT::CRF24Message_VED_BATT(const u_int8_t pipe, const void* bu
 
 const String CRF24Message_VED_BATT::getString() {
   char c[255];
-  snprintf_P(c, 255, PSTR("[%u] (V=%0.2fV, VS=%0.2fV, I=%0.2fA, P=%0.2fV, SOC=%0.2f%%)"), pipe, 
-        msg.b_voltage, msg.b_aux_voltage, msg.b_current, msg.b_power, msg.percent_charged/10.0);
-  Log.verboseln(F("CRF24Message_VED_BATT::getString() : %s"), c);
+  snprintf_P(c, 255, PSTR("CRF24Message_VED_BATT[%u] (ID=%i, V=%0.2fV, VS=%0.2fV, I=%0.2fA, P=%0.2fV, SOC=%0.2f%%)"), pipe, 
+        msg.id, msg.b_voltage, msg.b_aux_voltage, msg.b_current, msg.b_power, msg.percent_charged/10.0);
+  //Log.verboseln(F("CRF24Message_VED_BATT::getString() : %s"), c);
   return String(c);
 }
 
